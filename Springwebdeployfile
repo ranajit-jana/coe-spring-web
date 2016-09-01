@@ -1,9 +1,23 @@
 {
-    "id": "spring-web",
-    "application": "SpringMicroserviceApp",
+    "id": "spring-ms",
+    "application": "Spring-MicroService",
     "accesspoint": "http://172.31.0.233:8080",
     "containers": [
-        {"name": "mongo", "replicas": 1, "cpu": 1100, "memory": "170M", "port": 30071},
-        {"name": "node", "replicas": 1, "cpu": 1100, "memory": "500M", "port": 30066, "image": "snyamars007/node_dashboard"}
+        {"name": "data", "replicas": 1, "cpu": 1100, "memory": "1000Mi", "port": 30065, "image": "spring-ms:data", "command": [
+                            "java",
+                            "-jar",
+                            "-Dlogging.file=/tmp/coe-spring-data-cassandra.log",
+                            "-Dspring.cloud.config.uri=http://172.31.0.153:8888",
+                            "-Dspring.data.cassandra.contact-points=172.31.0.153",
+                            "-Dspring.cloud.consul.host=172.31.0.153",
+                            "coe-spring-data-cassandra-0.0.1-SNAPSHOT.jar"
+                        ]},
+        {"name": "web", "replicas": 1, "cpu": 1100, "memory": "1000Mi", "port": 30066, "image": "spring-ms:web", "command": [
+                            "java",
+                            "-jar",
+                            "-Dspring.cloud.config.uri=http://172.31.0.153:8888",
+                            "-Dspring.cloud.consul.host=172.31.0.153",
+                            "coe-spring-web-0.0.1-SNAPSHOT.jar"
+                        ]}
         ]
 }
