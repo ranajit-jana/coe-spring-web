@@ -47,20 +47,20 @@ node {
   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '146ff225-d9c5-4466-9ae0-3ff4c646ff30', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) 
   {
       //sh("git tag -a ${env.BUILD_NUMBER}  -m 'Jenkins'")
-      sh("git tag -a dashboard_${tag_value}_${env.BUILD_NUMBER}  -m 'Jenkins'")
+      sh("git tag -a springweb_${tag_value}_${env.BUILD_NUMBER}  -m 'Jenkins'")
       sh('git push https://"${GIT_USERNAME}":"${GIT_PASSWORD}"@github.com/snyamars/coe-spring-web.git --tags')
   }
   
 stage 'docker build'
   
-  // docker.withRegistry('', 'f6ab1d37-c2cf-4636-80b9-7745dffd4695') {
-   //     def pcImg = docker.build('snyamars007/coe-spring-web')
-   //     pcImg.push();
- // }
+  docker.withRegistry('', 'f6ab1d37-c2cf-4636-80b9-7745dffd4695') {
+        def pcImg = docker.build('snyamars007/spring-ms-web')
+        pcImg.push();
+  }
   
 
  
- //stage 'notifyKubernetes'
-//   sh 'curl -vvv -X POST -d @Springwebdeployfile -H "Content-Type: application/json" http://54.237.219.53:3306/step3'
+ stage 'notifyKubernetes'
+   sh 'curl -vvv -X POST -d @Springwebdeployfile -H "Content-Type: application/json" http://52.2.95.61:3306/deploy/kubernetes'
  
 }//end of node
