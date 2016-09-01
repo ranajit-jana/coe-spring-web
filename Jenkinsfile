@@ -28,10 +28,10 @@ node {
   
   sh "${mvnHome}/bin/mvn clean package"
   
-   def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/coe-spring-web"
-   echo "$fileName"
+   def fileName = "/var/lib/jenkins/workspace/${env.JOB_NAME}/coe-spring-web-0.0.1-SNAPSHOT.jar"
+   echo "filename... $fileName"
   def word1 = "warfile=${fileName}"
-  echo "${word1}"
+  echo "word1 ... ${word1}"
   
   def targetIPAddress = "${targetIPAddress}"
   echo "${targetIPAddress}"
