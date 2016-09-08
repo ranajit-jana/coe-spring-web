@@ -9,6 +9,7 @@
                             "-Dspring.cloud.config.uri=http://172.31.0.153:8888",
                             "-Dspring.cloud.consul.host=172.31.0.153",
                             "-Dspring.cloud.consul.discovery.port=30066",
+                            "-Dspring.cloud.consul.discovery.hostname=172.31.0.14",
                             "coe-spring-web-0.0.1-SNAPSHOT.jar"
                         ]}
         ]
