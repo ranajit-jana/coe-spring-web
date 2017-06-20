@@ -1,21 +1,21 @@
 {
     "id": "spring-ms-web",
     "application": "Spring-MicroService",
-    "accesspoint": "http://172.31.0.233:8080",
+    "accesspoint": "http://172.31.10.3:8080",
     "containers": [
         {"name": "web", "replicas": 1, "cpu": 1100, "memory": "1000Mi", "port": 30066, "image": "snyamars007/spring-ms-web", "command": [
                             "java",
                             "-jar",
-                            "-Dspring.cloud.config.uri=http://172.31.0.153:8888",
-                            "-Dspring.cloud.consul.host=172.31.0.153",
+                            "-Dspring.cloud.config.uri=http://54.161.66.73:8888",
+                            "-Dspring.cloud.consul.host=172.31.10.3",
                             "-Dspring.cloud.consul.discovery.port=30066",
-                            "-Dspring.cloud.consul.discovery.hostname=172.31.0.14",
+                            "-Dspring.cloud.consul.discovery.hostname=172.31.10.3",
                             "-Dcom.sun.management.jmxremote",
                             "-Dcom.sun.management.jmxremote.authenticate=false",
                             "-Dcom.sun.management.jmxremote.ssl=false",
                             "-Dcom.sun.management.jmxremote.rmi.port=30070",
                             "-Dcom.sun.management.jmxremote.port=30070",
-                            "-Djava.rmi.server.hostname=52.20.37.21",
+                            "-Djava.rmi.server.hostname=54.209.23.8",
                             "coe-spring-web-0.0.1-SNAPSHOT.jar" 
                         ]}
         ]
