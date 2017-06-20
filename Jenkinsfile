@@ -61,6 +61,6 @@ stage 'docker build'
 
  
  stage 'notifyKubernetes'
-   sh 'curl -vvv -X POST -d @Springwebdeployfile -H "Content-Type: application/json" http://54.161.66.73:3306/deploy/kubernetes'
+   sh 'curl -vvv -X POST -d @Springwebdeployfile -H "Content-Type: application/json" http://54.161.66.73:3303/deploy/kubernetes'
  
 }//end of node
