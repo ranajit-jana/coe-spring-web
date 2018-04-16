@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        healthCheckPath: /health
+        healthCheckInterval: 15s
+
+  health:
+    sensitive: false
+hello:
+  world: localvalue
+
+  
+ #config:
+ #   uri: http://127.0.0.1:8888 
